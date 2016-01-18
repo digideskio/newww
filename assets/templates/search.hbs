@@ -1,0 +1,63 @@
+<h2 class="centered ruled">
+  {{#if error}}
+    Sorry, search is not available at the moment.
+  {{else}}
+    {{#if totalResults}}
+      {{totalResults}}
+    {{else}}
+      Sorry, no
+    {{/if}}
+    result{{#unless singleResult}}s{{/unless}}
+    for
+    <a href="/search?q={{q}}&page={{page}}">&lsquo;{{q}}&rsquo;</a>
+  {{/if}}
+  <br/><a
+   href="https://www.algolia.com/?utm_source=npmjs-search"
+   title="npmjs.org search is provided by Algolia"
+   class="description search-by-algolia">search by <img src="/static/images/algolia-logo.svg" alt="Algolia" width="50" /></a>
+</h2>
+
+<div class="content-column">
+  <ul class="search-results">
+    {{#each results}}
+      {{#with fields}}
+        <li>
+          <div class="package-details">
+            <h3>
+              <a class="name" href="/package/{{name}}">{{name}}</a>
+              &nbsp;&nbsp;<a class="author" href="/~{{author}}">{{author}}</a>
+            </h3>
+
+
+            <p class="description">{{description}}</p>
+
+            <p class="stats">
+              <span class="version">v{{version}}</span>
+            </p>
+
+            {{#if keywords}}
+              <p class="keywords">
+                <i class="icon-tag"></i>
+                {{#each keywords}}
+                  {{#if @last}}
+                    {{this}}
+                  {{else}}
+                    {{this}},&nbsp;
+                  {{/if}}
+                {{/each}}
+              </p>
+            {{/if}}
+
+          </div>
+        </li>
+      {{/with}}
+    {{/each}}
+  </ul>
+  {{> ./pagination.hbs }}
+</div>
+
+{{#unless features.npmo}}
+  <div class="sidebar">
+    <div class="hiring-container" data-template="vanilla"></div>
+  </div>
+{{/unless}}

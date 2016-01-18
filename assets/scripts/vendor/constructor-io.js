@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 
   var searchWidth;
 
@@ -21,5 +21,5 @@ $(function() {
     searchWidth = $('#npm-search').outerWidth() - $('#site-search-submit').outerWidth();
     style.innerHTML = ".autocomplete-container, .autocomplete-suggestions, #powered-by-constructor-io { width: " + searchWidth + "px !important }";
   }
-});
+});*/
 
